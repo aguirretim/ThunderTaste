@@ -245,6 +245,15 @@ nav ul li a:hover {
     width: 20px; /* slightly smaller for better proportion */
 
 }
+.remove-icon {
+    display: none;
+    position: absolute;
+    top: 1px;
+    right: 14px;
+    z-index: 1;
+    width: 20px; /* slightly smaller for better proportion */
+
+}
 
 .recipe-card h3,
 .recipe-card .star-ratings {
