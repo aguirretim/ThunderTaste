@@ -112,7 +112,7 @@
         <hr>
     </section>
     <P> Share your thoughts with other ThunderChefs</p>
-    <button type="submit" class="btn btn-primary mb-2 mr-2">Write a ThunderChef Review</button>
+    <button type="submit" class="btn btn-primary mb-2 mr-2" onclick="navigateToReviewPage();">Write a ThunderChef Review</button>
     <!-- Reviews -->
     <section>
         <h3>Reviews</h3>
@@ -182,6 +182,12 @@
     // Close the modal when the "x" is clicked
     function closeModal() {
         modal.style.display = "none";
+    }
+
+
+
+        function navigateToReviewPage() {
+        window.location.href = "create-a-review.html";
     }
 
 
