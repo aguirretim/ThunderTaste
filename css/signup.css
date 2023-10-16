@@ -48,7 +48,7 @@ body {
     gap: 20px;
     width: 540px;
     height: 600px;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
 /***********************************
@@ -58,8 +58,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
     width: 100%;
+    height: 23%;
 }
 
 .branding-link {
@@ -68,7 +68,7 @@ body {
     text-decoration: none;
     color: inherit;
     width: 100%;
-    height: 100%;
+    height: 30%;
     justify-content: center;
 }
 
@@ -89,25 +89,6 @@ body {
     margin-bottom: 20px;
 }
 
-.already-have-account {
-    width: 100%;           /* occupy the full width of the parent container */
-    text-align: center;    /* center the text within the width */
-}
-
-.already-have-account-container{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-
-}
-#signupForm{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-
-}
 /***********************************
  INPUT STYLES
 ************************************/
@@ -116,11 +97,11 @@ body {
     width: 90%;
     max-width: 497px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .input-box {
-    margin-bottom: 20px; /* adjust this value based on your preference */
+    margin-bottom: 20px;
 }
 
 .input-field {
@@ -129,13 +110,13 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     border: 1px solid #aaa;
+    margin-bottom: 5px;
 }
 
 .error-message {
-    display: none;
     color: red;
     font-size: 12px;
-    height: 15px;
+    align-self: flex-start;
 }
 
 /***********************************
@@ -191,6 +172,68 @@ body {
 .button-label:hover {
     background-color: rgba(200, 200, 200, 1);
 }
+
 .signup-button {
-    margin-top: 5px; /* adjust the value based on your preference */
+    margin-top: 5px;
+}
+
+.already-have-account {
+    width: 100%;
+    text-align: center;
+}
+
+.already-have-account-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#signupForm{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+    /* Adjustments to signup box for better centering and width */
+    .signup-box {
+        width: 95%;
+        padding: 20px 0;
+    }
+
+    /* Increase size of text for better readability */
+    .brand-name {
+        font-size: 30px;
+    }
+
+    .join-info {
+        font-size: 16px;
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    /* Enhancing the size of input fields and buttons for better touch targets */
+    .input-field {
+        padding: 12px 15px;
+    }
+
+    .button-label {
+        height: 45px;
+        font-size: 25px;
+    }
+
+    /* Reduce padding for password input to adjust for button */
+    .password-input-container .input-field {
+        padding-right: 60px;
+    }
+
+    /* Adjust position of toggle button */
+    .toggle-password-button {
+        right: 10px;
+    }
 }

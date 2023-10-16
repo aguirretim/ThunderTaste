@@ -80,12 +80,16 @@
         toggleVisibility('confirmPassword', 'togglePassword');
     });
 
+
+
+
     // Individual validation functions
     function validateEmail() {
         const email = document.getElementById('email').value;
         const emailPattern = /^[^@]+@\w+(\.\w+)+\w$/;
         const errorMsg = !emailPattern.test(email) ? "Please enter a valid email." : "";
         document.getElementById('emailError').textContent = errorMsg;
+        showErrorMessage('emailError', errorMsg);
         return !errorMsg;
     }
 
@@ -93,6 +97,7 @@
         const username = document.getElementById('username').value;
         const errorMsg = !username ? "Username cannot be empty." : "";
         document.getElementById('usernameError').textContent = errorMsg;
+        showErrorMessage('emailError', errorMsg);
         return !errorMsg;
     }
 
@@ -100,6 +105,7 @@
         const password = document.getElementById('password').value;
         const errorMsg = password.length < 8 ? "Password should be at least 8 characters long." : "";
         document.getElementById('passwordError').textContent = errorMsg;
+        showErrorMessage('emailError', errorMsg);
         return !errorMsg;
     }
 
@@ -108,6 +114,7 @@
         const confirmPassword = document.getElementById('confirmPassword').value;
         const errorMsg = password !== confirmPassword ? "Passwords do not match." : "";
         document.getElementById('confirmPasswordError').textContent = errorMsg;
+        showErrorMessage('emailError', errorMsg);
         return !errorMsg;
     }
 
