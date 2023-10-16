@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="./css/signup.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="./css/signup.css" rel="stylesheet">
     <link href="./css/normalize.css" rel="stylesheet">
     <title>Sign Up Page</title>
 </head>
 
 <body>
 <div class="box-container">
-
     <div class="background-image"></div>
     <div class="signup-box">
         <div class="login-header">
@@ -22,73 +21,107 @@
                     <svg class="bolt-icon" height="50" viewBox="0 0 36 50" width="36" xmlns="http://www.w3.org/2000/svg">
                         <use xlink:href="images/icons/icons.svg#bolt-icon"></use>
                     </svg>
-                    </div>
+                </div>
             </a>
             <h2 class="join-info">Sign up to save recipes and Share them with your friends.</h2>
         </div>
-        <!-- Email Input -->
-        <div class="input-box">
-            <input type="email" class="input-field" placeholder="Email">
-        </div>
-        <!-- Username Input -->
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Username">
-        </div>
 
+        <form id="signupForm">
+            <div class="input-box">
+                <input type="email" id="email" class="input-field" placeholder="Email">
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="username" class="input-field" placeholder="Username">
+                <div class="error-message" id="usernameError"></div>
+            </div>
+            <div class="input-box password-input-container">
+                <input type="password" id="password" class="input-field" placeholder="Password">
+                <button type="button" id="togglePassword1" class="toggle-password-button">SHOW</button>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            <div class="input-box password-input-container">
+                <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password">
+                <button type="button" id="togglePassword" class="toggle-password-button">SHOW</button>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+            <div class="signup-button">
+                <button type="submit" class="button-label">Join Now</button>
+            </div>
 
-        <!-- Password Input -->
-        <div class="input-box password-input-container">
-            <input type="password" id="password" class="input-field" placeholder="Password">
-            <button id="togglePassword1" class="toggle-password-button">SHOW</button>
-        </div>
-
-        <!-- Confirm Password Input -->
-        <div class="input-box password-input-container">
-            <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password">
-            <button id="togglePassword" class="toggle-password-button">SHOW</button>
-        </div>
-
-        <!-- Signup Button -->
-        <div class="signup-button">
-            <button type="submit" class="button-label">Join Now</button>
-        </div>
-
+        </form>
+        <div class="already-have-account-container">
         <a href="login.html" class="already-have-account">Already have an account? Login</a>
+        </div>
     </div>
+
 
 </div>
 
 <script>
-    document.getElementById('togglePassword1').addEventListener('click', function() {
-        const password = document.getElementById('password');
-        const toggleBtn1 = document.getElementById('togglePassword1');
-
-        if (password.type === 'password') {
-            password.type = 'text';
-            toggleBtn1.textContent = 'HIDE';
+    // Toggle password visibility
+    function toggleVisibility(targetId, toggleButtonId) {
+        const target = document.getElementById(targetId);
+        const toggleBtn = document.getElementById(toggleButtonId);
+        if (target.type === 'password') {
+            target.type = 'text';
+            toggleBtn.textContent = 'HIDE';
         } else {
-            password.type = 'password';
-            toggleBtn1.textContent = 'SHOW';
+            target.type = 'password';
+            toggleBtn.textContent = 'SHOW';
         }
+    }
+
+    document.getElementById('togglePassword1').addEventListener('click', function() {
+        toggleVisibility('password', 'togglePassword1');
     });
 
     document.getElementById('togglePassword').addEventListener('click', function() {
-        const confirmPassword = document.getElementById('confirmPassword');
-        const toggleBtn = document.getElementById('togglePassword');
-
-        if (confirmPassword.type === 'password') {
-            confirmPassword.type = 'text';
-            toggleBtn.textContent = 'HIDE';
-        } else {
-            confirmPassword.type = 'password';
-            toggleBtn.textContent = 'SHOW';
-        }
+        toggleVisibility('confirmPassword', 'togglePassword');
     });
 
+    // Individual validation functions
+    function validateEmail() {
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[^@]+@\w+(\.\w+)+\w$/;
+        const errorMsg = !emailPattern.test(email) ? "Please enter a valid email." : "";
+        document.getElementById('emailError').textContent = errorMsg;
+        return !errorMsg;
+    }
 
+    function validateUsername() {
+        const username = document.getElementById('username').value;
+        const errorMsg = !username ? "Username cannot be empty." : "";
+        document.getElementById('usernameError').textContent = errorMsg;
+        return !errorMsg;
+    }
+
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const errorMsg = password.length < 8 ? "Password should be at least 8 characters long." : "";
+        document.getElementById('passwordError').textContent = errorMsg;
+        return !errorMsg;
+    }
+
+    function validateConfirmPassword() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorMsg = password !== confirmPassword ? "Passwords do not match." : "";
+        document.getElementById('confirmPasswordError').textContent = errorMsg;
+        return !errorMsg;
+    }
+
+    // Event listeners for real-time validation
+    document.getElementById('email').addEventListener('input', validateEmail);
+    document.getElementById('username').addEventListener('input', validateUsername);
+    document.getElementById('password').addEventListener('input', validatePassword);
+    document.getElementById('confirmPassword').addEventListener('input', validateConfirmPassword);
+
+    // Validate form on submission
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        let isValid = validateEmail() && validateUsername() && validatePassword() && validateConfirmPassword();
+        if (!isValid) event.preventDefault();
+    });
 </script>
-
-
 </body>
-
 </html>
