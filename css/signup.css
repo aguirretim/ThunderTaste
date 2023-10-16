@@ -83,6 +83,47 @@ body {
 }
 
 /***********************************
+ PASSWORD TOGGLE BUTTON
+************************************/
+.password-input-container {
+    position: relative;
+}
+
+.input-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 5px; /* Smooth the corners */
+    border: 1px solid #aaa; /* A slight border to visualize the input better */
+}
+
+.password-input-container .input-field {
+    padding-right: 50px; /* original padding + space for the button, adjust as per the button's width */
+}
+
+.toggle-password-button {
+    position: absolute;
+    right: 15px; /* keeps it consistent with the input field padding */
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 12px; /* slightly smaller text */
+    cursor: pointer;
+    outline: none;
+    color: #777; /* A neutral color */
+    padding: 0 5px; /* some horizontal padding */
+    border-radius: 5px; /* for consistent look */
+    transition: background-color 0.3s; /* smooth transition */
+}
+
+.toggle-password-button:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* a slight highlight on hover */
+    color: #555; /* a bit darker text on hover */
+}
+
+
+/***********************************
  LOGIN HEADER
 ************************************/
 .login-header {

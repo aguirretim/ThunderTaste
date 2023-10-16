@@ -34,10 +34,20 @@
         <div class="input-box">
             <input type="text" class="input-field" placeholder="Username">
         </div>
+
+
         <!-- Password Input -->
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password">
+        <div class="input-box password-input-container">
+            <input type="password" id="password" class="input-field" placeholder="Password">
+            <button id="togglePassword1" class="toggle-password-button">SHOW</button>
         </div>
+
+        <!-- Confirm Password Input -->
+        <div class="input-box password-input-container">
+            <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password">
+            <button id="togglePassword" class="toggle-password-button">SHOW</button>
+        </div>
+
         <!-- Signup Button -->
         <div class="signup-button">
             <button type="submit" class="button-label">Join Now</button>
@@ -47,6 +57,38 @@
     </div>
 
 </div>
+
+<script>
+    document.getElementById('togglePassword1').addEventListener('click', function() {
+        const password = document.getElementById('password');
+        const toggleBtn1 = document.getElementById('togglePassword1');
+
+        if (password.type === 'password') {
+            password.type = 'text';
+            toggleBtn1.textContent = 'HIDE';
+        } else {
+            password.type = 'password';
+            toggleBtn1.textContent = 'SHOW';
+        }
+    });
+
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const confirmPassword = document.getElementById('confirmPassword');
+        const toggleBtn = document.getElementById('togglePassword');
+
+        if (confirmPassword.type === 'password') {
+            confirmPassword.type = 'text';
+            toggleBtn.textContent = 'HIDE';
+        } else {
+            confirmPassword.type = 'password';
+            toggleBtn.textContent = 'SHOW';
+        }
+    });
+
+
+</script>
+
+
 </body>
 
 </html>
