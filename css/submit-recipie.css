@@ -285,6 +285,11 @@ nav ul li a:hover {
     margin-bottom: 5px; /* Spacing between label and input field */
 }
 
+.form-text.text-danger {
+    display: none; /* Initially hide error text */
+    color: #dc3545; /* Bootstrap danger color */
+}
+
 /***********************************
  MOBILE RESPONSIVE DESIGN
 ************************************/
