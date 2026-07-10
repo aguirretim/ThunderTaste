@@ -2,6 +2,9 @@
 
 A recipe discovery website built as a Per Scholas capstone project. Users can browse recipes, search by ingredient or name, and view full recipe details.
 
+![ThunderTaste screenshot](docs/screenshot.png)
+*Home page — recent recipes feed with featured dishes.*
+
 ## Features
 - Recipe search and browse
 - Recipe detail pages
